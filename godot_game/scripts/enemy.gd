@@ -4,10 +4,10 @@ extends KinematicBody2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var close=200.0
-var too_close=80.0
+var close=700
+var too_close=100
 var distance=0.0
-var spd=50
+var spd=100
 var dir=Vector2.ZERO
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,6 +24,7 @@ func _physics_process(delta):
 		shot()
 		if distance>too_close:
 			dir=global_position.direction_to(glo.player.global_position)
+			move_and_slide(dir*spd)
 		
 		
 
