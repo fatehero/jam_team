@@ -16,6 +16,9 @@ var halfs:Dictionary
 var r_selected=0
 var l_selected=1
 var field
+signal take_dmg
+var r_hp=0
+var l_hp=0
 # Called when the node enters the scene tree for the first time.
 
 func _ready():

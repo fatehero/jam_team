@@ -11,14 +11,19 @@ var latency=0
 var hp setget set_hp
 func set_hp(val):
 	hp=val
+	
+	glo[side+"_hp"]=hp
+	print(hp)
+	glo.emit_signal("take_dmg")
 	if hp<=0:
+		glo.player["halfs"]-=1
 		queue_free()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print(glo.player)
 	glo[side+"_half"]=self
 	info=glo.my_ships[glo[side+"_selected"]]
-	hp=info.helth+10
+	self.hp=info.helth+20
 
 
 

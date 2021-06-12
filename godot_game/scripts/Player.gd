@@ -7,7 +7,14 @@ onready var forward = $Forward
 var motion : Vector2
 var speed = 300
 var rotation_speed = 250
+var halfs=2 setget set_halfs
 
+
+func set_halfs(val):
+	print("set_half")
+	halfs=val
+	if halfs<=0:
+		get_tree().reload_current_scene()
 
 func _ready():
 	glo.player = self

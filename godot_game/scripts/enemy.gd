@@ -66,5 +66,8 @@ func _on_hitbox_body_entered(body):
 	
 	if "dmg" in body:
 		if body.belong_to!="enemy":
+			
 			self.hp-=body.dmg
-			body.queue_free()
+			body.pierce-=1
+			if body.pierce<0:
+				body.queue_free()
