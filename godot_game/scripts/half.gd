@@ -6,7 +6,7 @@ extends Area2D
 # var b = "text"
 export var side="r"
 var info
-
+onready var img=$img
 var latency=0
 var hp setget set_hp
 func set_hp(val):
@@ -23,6 +23,9 @@ func _ready():
 	print(glo.player)
 	glo[side+"_half"]=self
 	info=glo.my_ships[glo[side+"_selected"]]
+	for i in info.colors.size():
+		print(info.colors[i])
+		img.material.set_shader_param("replace_"+str(i), info.colors[i])
 	self.hp=info.helth+20
 
 

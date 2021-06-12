@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://art/sprite_2.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
@@ -8,61 +8,23 @@
 [ext_resource path="res://art/sprite_3.png" type="Texture" id=6]
 [ext_resource path="res://art/sprite_1.png" type="Texture" id=7]
 [ext_resource path="res://shaders/change color.shader" type="Shader" id=8]
+[ext_resource path="res://shaders/chng3.shader" type="Shader" id=9]
 
-[sub_resource type="Shader" id=9]
-code = "shader_type canvas_item;
-
-
-uniform vec4 original_0: hint_color;
-uniform vec4 original_1: hint_color;
-uniform vec4 original_2: hint_color;
-uniform vec4 original_3: hint_color;
-uniform vec4 original_4: hint_color;
-uniform vec4 replace_0: hint_color;
-uniform vec4 replace_1: hint_color;
-uniform vec4 replace_2: hint_color;
-uniform vec4 replace_3: hint_color;
-uniform vec4 replace_4: hint_color;
-
-uniform float precision = 0.1;
-
-
-vec4 swap_color(vec4 color){
-	vec4 original_colors[5] = vec4[5] (original_0, original_1, original_2, original_3, original_4);
-	vec4 replace_colors[5] = vec4[5] (replace_0, replace_1, replace_2, replace_3, replace_4);
-	for (int i = 0; i < 5; i ++) {
-		if (distance(color, original_colors[i]) <= precision){
-			return replace_colors[i];
-		}
-	}
-	return color;
-}
-
-
-void fragment() {
-	COLOR = swap_color(texture(TEXTURE, UV));
-}
-
-// Recolor
-
-"
-
-[sub_resource type="ShaderMaterial" id=4]
+[sub_resource type="ShaderMaterial" id=10]
 render_priority = 1
-shader = SubResource( 9 )
+shader = ExtResource( 9 )
 shader_param/original_0 = Color( 0.717647, 0.643137, 0.223529, 1 )
 shader_param/original_1 = Color( 0.556863, 0.490196, 0.188235, 1 )
-shader_param/original_2 = Color( 1, 1, 1, 1 )
-shader_param/original_3 = Color( 1, 1, 1, 1 )
-shader_param/original_4 = Color( 1, 1, 1, 1 )
-shader_param/replace_0 = Color( 0, 0, 0, 1 )
-shader_param/replace_1 = null
-shader_param/replace_2 = null
-shader_param/replace_3 = null
-shader_param/replace_4 = null
-shader_param/precision = 0.0
+shader_param/original_2 = Color( 0.490196, 0.423529, 0.192157, 1 )
+shader_param/original_3 = Color( 0.854902, 0.843137, 0.235294, 1 )
+shader_param/original_4 = Color( 0.45098, 0.392157, 0.172549, 1 )
+shader_param/replace_0 = Color( 0.717647, 0.643137, 0.223529, 1 )
+shader_param/replace_1 = Color( 0.556863, 0.490196, 0.188235, 1 )
+shader_param/replace_2 = Color( 0.490196, 0.423529, 0.192157, 1 )
+shader_param/replace_3 = Color( 0.854902, 0.843137, 0.235294, 1 )
+shader_param/replace_4 = Color( 0.45098, 0.392157, 0.172549, 1 )
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
@@ -75,7 +37,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="ShaderMaterial" id=6]
+[sub_resource type="ShaderMaterial" id=3]
 render_priority = -1
 shader = ExtResource( 8 )
 shader_param/original_0 = null
@@ -90,7 +52,48 @@ shader_param/replace_3 = null
 shader_param/replace_4 = null
 shader_param/precision = 0.1
 
-[sub_resource type="Shader" id=10]
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 8 )
+shader_param/original_0 = null
+shader_param/original_1 = null
+shader_param/original_2 = null
+shader_param/original_3 = null
+shader_param/original_4 = null
+shader_param/replace_0 = null
+shader_param/replace_1 = null
+shader_param/replace_2 = null
+shader_param/replace_3 = null
+shader_param/replace_4 = null
+shader_param/precision = 0.1
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 1 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "move",
+"speed": 5.0
+} ]
+
+[sub_resource type="ShaderMaterial" id=7]
+render_priority = 1
+shader = ExtResource( 9 )
+shader_param/original_0 = Color( 0.717647, 0.643137, 0.223529, 1 )
+shader_param/original_1 = Color( 0.556863, 0.490196, 0.188235, 1 )
+shader_param/original_2 = Color( 0.490196, 0.423529, 0.192157, 1 )
+shader_param/original_3 = Color( 0.854902, 0.843137, 0.235294, 1 )
+shader_param/original_4 = Color( 0.45098, 0.392157, 0.172549, 1 )
+shader_param/replace_0 = Color( 0.717647, 0.643137, 0.223529, 1 )
+shader_param/replace_1 = Color( 0.556863, 0.490196, 0.188235, 1 )
+shader_param/replace_2 = Color( 0.490196, 0.423529, 0.192157, 1 )
+shader_param/replace_3 = Color( 0.854902, 0.843137, 0.235294, 1 )
+shader_param/replace_4 = Color( 0.45098, 0.392157, 0.172549, 1 )
+
+[sub_resource type="Shader" id=8]
 code = "shader_type canvas_item;
 
 
@@ -128,46 +131,20 @@ void fragment() {
 
 "
 
-[sub_resource type="ShaderMaterial" id=11]
-shader = SubResource( 10 )
-shader_param/original_0 = null
-shader_param/original_1 = null
-shader_param/original_2 = null
-shader_param/original_3 = null
-shader_param/original_4 = null
-shader_param/replace_0 = null
-shader_param/replace_1 = null
-shader_param/replace_2 = null
-shader_param/replace_3 = null
-shader_param/replace_4 = null
-shader_param/precision = 0.1
-
-[sub_resource type="SpriteFrames" id=7]
-animations = [ {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "idle",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ), ExtResource( 1 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "move",
-"speed": 5.0
-} ]
-
-[sub_resource type="ShaderMaterial" id=8]
-shader = ExtResource( 8 )
-shader_param/original_0 = null
-shader_param/original_1 = null
-shader_param/original_2 = null
-shader_param/original_3 = null
-shader_param/original_4 = null
-shader_param/replace_0 = null
-shader_param/replace_1 = null
-shader_param/replace_2 = null
-shader_param/replace_3 = null
-shader_param/replace_4 = null
-shader_param/precision = 0.1
+[sub_resource type="ShaderMaterial" id=9]
+render_priority = 1
+shader = SubResource( 8 )
+shader_param/original_0 = Color( 0.717647, 0.643137, 0.223529, 1 )
+shader_param/original_1 = Color( 0.556863, 0.490196, 0.188235, 1 )
+shader_param/original_2 = Color( 0.490196, 0.423529, 0.192157, 1 )
+shader_param/original_3 = Color( 0.854902, 0.843137, 0.235294, 1 )
+shader_param/original_4 = Color( 0.45098, 0.392157, 0.172549, 1 )
+shader_param/replace_0 = Color( 0.717647, 0.223529, 0.223529, 1 )
+shader_param/replace_1 = Color( 0.188235, 0.717647, 0.145098, 1 )
+shader_param/replace_2 = Color( 0.490196, 0.192157, 0.192157, 1 )
+shader_param/replace_3 = Color( 0.854902, 0.235294, 0.235294, 1 )
+shader_param/replace_4 = Color( 0.45098, 0.172549, 0.172549, 1 )
+shader_param/precision = 0.0
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -192,29 +169,27 @@ collision_mask = 2
 script = ExtResource( 4 )
 
 [node name="img" type="AnimatedSprite" parent="right_half"]
-material = SubResource( 4 )
+material = SubResource( 10 )
 position = Vector2( 32, 0 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 5 )
+frames = SubResource( 2 )
 animation = "move"
-frame = 2
 playing = true
 flip_h = true
 
 [node name="modulate" type="AnimatedSprite" parent="right_half"]
 visible = false
-material = SubResource( 6 )
+material = SubResource( 3 )
 position = Vector2( 32, 0 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 5 )
+frames = SubResource( 2 )
 animation = "idle"
 playing = true
 flip_h = true
 
 [node name="coll" type="CollisionPolygon2D" parent="right_half"]
-visible = false
 position = Vector2( 16, 0 )
-polygon = PoolVector2Array( -11.1119, -24.3627, 5.3695, -17.9949, 19.6034, -7.1322, 20.3526, 12.7204, 15.1085, 22.8339, 1.24915, 7.10172, -9.98815, 7.10172 )
+polygon = PoolVector2Array( -11.1119, -24.3627, 5.3695, -17.9949, 19.6034, -7.1322, 20.3526, 12.7204, 15.1085, 22.8339, 1.24915, 7.10172, -16.3115, 6.29747 )
 
 [node name="Timer" type="Timer" parent="right_half"]
 wait_time = 0.1
@@ -226,33 +201,45 @@ collision_mask = 2
 script = ExtResource( 4 )
 side = "l"
 
-[node name="img" type="AnimatedSprite" parent="left_half"]
-material = SubResource( 11 )
-position = Vector2( -32, 0 )
-scale = Vector2( 2, 2 )
-frames = SubResource( 7 )
-animation = "move"
-playing = true
-
 [node name="modulate" type="AnimatedSprite" parent="left_half"]
 visible = false
-material = SubResource( 8 )
+material = SubResource( 4 )
 position = Vector2( -32, 0 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 7 )
+frames = SubResource( 5 )
 animation = "idle"
 playing = true
 
-[node name="coll2" type="CollisionPolygon2D" parent="left_half"]
-visible = false
+[node name="coll" type="CollisionPolygon2D" parent="left_half"]
 position = Vector2( -16, 0 )
 rotation = 3.14159
 scale = Vector2( 1, -1 )
-polygon = PoolVector2Array( -11.1119, -24.3627, 5.3695, -17.9949, 19.6034, -7.1322, 20.3526, 12.7204, 15.1085, 22.8339, 1.24915, 7.10172, -9.98815, 7.10172 )
+polygon = PoolVector2Array( -11.1119, -24.3627, 5.3695, -17.9949, 19.6034, -7.1322, 20.3526, 12.7204, 15.1085, 22.8339, 1.24915, 7.10172, -16.5804, 6.59477 )
 
 [node name="Timer" type="Timer" parent="left_half"]
 wait_time = 0.1
 autostart = true
+
+[node name="img" type="AnimatedSprite" parent="left_half"]
+material = SubResource( 7 )
+position = Vector2( -32, 0 )
+scale = Vector2( -2, 2 )
+frames = SubResource( 2 )
+animation = "move"
+frame = 1
+playing = true
+flip_h = true
+
+[node name="img2" type="AnimatedSprite" parent="left_half"]
+visible = false
+material = SubResource( 9 )
+position = Vector2( -32, 0 )
+scale = Vector2( -2, 2 )
+frames = SubResource( 2 )
+animation = "move"
+frame = 1
+playing = true
+flip_h = true
 
 [connection signal="body_entered" from="right_half" to="right_half" method="_on_right_half_body_entered"]
 [connection signal="timeout" from="right_half/Timer" to="right_half" method="_on_Timer_timeout"]
