@@ -9,16 +9,32 @@ var too_close=100
 var distance=0.0
 var spd=100
 var dir=Vector2.ZERO
+var info
+var latency=0
+var hp setget set_hp
+func set_hp(val):
+	hp=val
+	if hp<=0:
+		queue_free()
+
+onready var forward = $Forward
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	randomize()
+	var rnd=round(rand_range(0,glo.enemy_ships.size()-1))
+	info=glo.enemy_ships[rnd]
+	
+	hp=info.helth
 
 
+	
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 func _physics_process(delta):
 	distance=global_position.distance_to(glo.player.global_position)
+	
 	if distance<close:
 		look_at(glo.player.global_position)
 		shot()
@@ -31,3 +47,24 @@ func _physics_process(delta):
 
 func shot():
 	pass
+	if latency<=0:
+		var new_bullet:KinematicBody2D=glo.bullet.instance()
+		for i in ['dmg','spd','pierce']:
+			new_bullet[i]=info['bullet_'+i]
+		new_bullet.global_position=	forward.global_position
+		new_bullet.global_rotation_degrees=global_rotation_degrees+90
+		glo.field.add_child(new_bullet)
+		latency=info.latency
+		
+
+
+func _on_Timer_timeout():
+	latency-=0.1
+
+
+func _on_hitbox_body_entered(body):
+	
+	if "dmg" in body:
+		if body.belong_to!="enemy":
+			self.hp-=body.dmg
+			body.queue_free()

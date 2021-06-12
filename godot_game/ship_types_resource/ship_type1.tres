@@ -5,7 +5,8 @@
 [resource]
 script = ExtResource( 1 )
 color = Color( 0, 0.129412, 0.972549, 1 )
-health = 90
-bullet_spd = 60
-pierce_through = 1
+helth = 100
+bullet_spd = 380
+bullet_pierce = 0
 bullet_dmg = 8
+latency = 1
