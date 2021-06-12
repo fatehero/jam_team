@@ -12,7 +12,7 @@ uniform vec4 replace_2: hint_color;
 uniform vec4 replace_3: hint_color;
 uniform vec4 replace_4: hint_color;
 
-const float precision = 0.1;
+uniform float precision = 0.1;
 
 
 vec4 swap_color(vec4 color){
