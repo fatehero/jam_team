@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://scripts/ship_type.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+color = Color( 1, 0, 0, 1 )
+health = 100
+bullet_spd = 50
+pierce_through = 0
+bullet_dmg = 10
