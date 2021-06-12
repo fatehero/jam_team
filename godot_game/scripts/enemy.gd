@@ -29,4 +29,4 @@ func _physics_process(delta):
 
 
 func shot():
-	pass	
+	pass

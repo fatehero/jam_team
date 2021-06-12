@@ -9,7 +9,7 @@ var speed = 300
 var rotation_speed = 250
 
 func _ready():
-	glow.player = self
+	glo.player = self
 
 func _physics_process(delta):
 	motion = global_position.direction_to(forward.global_position)

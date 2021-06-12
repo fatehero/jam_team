@@ -26,7 +26,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-glow="*res://scripts/glow.gd"
+glo="*res://scripts/glo.gd"
 
 [input]
 
