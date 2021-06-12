@@ -3,10 +3,10 @@
 [ext_resource path="res://scripts/half.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 32 )
 
-[sub_resource type="ShaderMaterial" id=4]
+[sub_resource type="ShaderMaterial" id=2]
 
 [node name="left_half" type="Area2D"]
 collision_layer = 2
@@ -16,14 +16,14 @@ side = "l"
 
 [node name="coll" type="CollisionShape2D" parent="."]
 position = Vector2( -16, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
 
 [node name="img" type="Sprite" parent="."]
-material = SubResource( 4 )
+material = SubResource( 2 )
 texture = ExtResource( 2 )
 
 [connection signal="body_entered" from="." to="." method="_on_right_half_body_entered"]
