@@ -5,11 +5,12 @@
 [resource]
 resource_local_to_scene = true
 script = ExtResource( 1 )
-colors = PoolColorArray( 1, 0.0235294, 0, 1, 0.556863, 0.188235, 0.188235, 1, 0.490196, 0.192157, 0.192157, 1, 0.854902, 0.235294, 0.235294, 1, 0.45098, 0.392157, 0.172549, 1 )
-helth = 40
+colors = PoolColorArray( 1, 0.0235294, 0, 1, 0.556863, 0.188235, 0.188235, 1, 0.490196, 0.192157, 0.192157, 1, 0.854902, 0.235294, 0.235294, 1, 0.45098, 0.172549, 0.172549, 1 )
+helth = 30
 bullet_spd = 300
 bullet_pierce = 0
 bullet_dmg = 20
+bullet_sound = 2
 latency = 2.0
 speed = 30
 bullet_shape = 3

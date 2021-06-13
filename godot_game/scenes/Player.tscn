@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://art/sprite_2.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
@@ -10,6 +10,10 @@
 [ext_resource path="res://shaders/change color.shader" type="Shader" id=8]
 [ext_resource path="res://shaders/chng3.shader" type="Shader" id=9]
 [ext_resource path="res://scenes/anime.tscn" type="PackedScene" id=10]
+[ext_resource path="res://art/player_reverse/player_reverse_frame0000.png" type="Texture" id=11]
+[ext_resource path="res://art/player_reverse/player_reverse_frame0001.png" type="Texture" id=12]
+[ext_resource path="res://art/player_reverse/player_reverse_frame0002.png" type="Texture" id=13]
+[ext_resource path="res://SFX/Player_Spaceship_Engine.wav" type="AudioStream" id=14]
 
 [sub_resource type="ShaderMaterial" id=1]
 render_priority = 1
@@ -30,6 +34,11 @@ animations = [ {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "revers",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ), ExtResource( 1 ), ExtResource( 6 ) ],
@@ -67,19 +76,6 @@ shader_param/replace_2 = Color( 0.490196, 0.423529, 0.192157, 1 )
 shader_param/replace_3 = Color( 0.854902, 0.843137, 0.235294, 1 )
 shader_param/replace_4 = Color( 0.45098, 0.392157, 0.172549, 1 )
 
-[sub_resource type="SpriteFrames" id=5]
-animations = [ {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "idle",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ), ExtResource( 1 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "move",
-"speed": 5.0
-} ]
-
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 bullet_scene = ExtResource( 3 )
@@ -107,7 +103,8 @@ material = SubResource( 1 )
 position = Vector2( 32, 0 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 2 )
-animation = "move"
+animation = "revers"
+frame = 1
 playing = true
 flip_h = true
 
@@ -117,7 +114,8 @@ material = SubResource( 3 )
 position = Vector2( 32, 0 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 2 )
-animation = "idle"
+animation = "revers"
+frame = 1
 playing = true
 flip_h = true
 
@@ -153,11 +151,15 @@ autostart = true
 material = SubResource( 4 )
 position = Vector2( -32, 0 )
 scale = Vector2( -2, 2 )
-frames = SubResource( 5 )
+frames = SubResource( 2 )
 animation = "move"
-frame = 2
+frame = 1
 playing = true
 flip_h = true
+
+[node name="engine" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+volume_db = -1.0
 
 [connection signal="body_entered" from="right_half" to="right_half" method="_on_right_half_body_entered"]
 [connection signal="timeout" from="right_half/Timer" to="right_half" method="_on_Timer_timeout"]

@@ -7,13 +7,13 @@ onready var anim_left = $left_half/img
 onready var anim_right =$right_half/img
 
 var motion : Vector2
-var speed = 300
+var speed = 250
 var rotation_speed = 200
 var halfs=2 setget set_halfs
 
 
 func set_halfs(val):
-	print("set_half")
+	
 	halfs=val
 	
 	if halfs<=0:
@@ -44,6 +44,9 @@ func _physics_process(delta):
 			motion = Vector2.ZERO
 		elif down:
 			motion *= -speed
+			anim_left.animation = "revers"
+		
+			anim_right.animation = "revers"
 		else:
 			motion *=speed
 		
@@ -64,5 +67,9 @@ func _physics_process(delta):
 		
 		anim_right.animation = "move"
 		rotation_degrees += -rotation_speed * delta
-
+	if motion!=Vector2.ZERO :
+		if  !$engine.playing:
+			$engine.play()
+	else:
+		$engine.stop()	
 	motion = move_and_slide(motion)

@@ -5,7 +5,7 @@ extends KinematicBody2D
 # var a = 2
 # var b = "text"
 
-var close=1000
+var close=600
 var too_close=150
 var distance=0.0
 var spd=150
@@ -50,6 +50,7 @@ func _physics_process(delta):
 #	if distance<close:
 		look_at(glo.player.global_position)
 		shot()
+		img.animation="idle"
 #		ray.cast_to.y=spd+40
 #		ray.force_raycast_update()
 #		if ray_detect(ray):
@@ -57,7 +58,11 @@ func _physics_process(delta):
 #			var i=round(rand_range(2,3))
 #			var dir_ray=get_node("ray"+str(i))
 #			print("colideng")
+
 		if distance>too_close:
+				img.animation="move"
+				if  !$engine.playing:
+					$engine.play()
 				dir=global_position.direction_to(glo.player.global_position)
 				move_and_slide(dir.normalized()*spd)
 		
@@ -68,8 +73,9 @@ func shot():
 	pass
 	if latency<=0:
 		var new_bullet:KinematicBody2D=glo.bullet.instance()
-		for i in ['dmg','spd','pierce',"shape"]:
+		for i in ['dmg','spd','pierce',"shape","sound"]:
 			new_bullet[i]=info['bullet_'+i]
+		new_bullet.colors=info["colors"]	
 		new_bullet.global_position=	forward.global_position
 		new_bullet.global_rotation_degrees=global_rotation_degrees+90
 		new_bullet.shooter=self

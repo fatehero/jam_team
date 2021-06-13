@@ -9,6 +9,7 @@ helth = 120
 bullet_spd = 360
 bullet_pierce = 0
 bullet_dmg = 12
+bullet_sound = 0
 latency = 0.8
 speed = 25
 bullet_shape = 1
