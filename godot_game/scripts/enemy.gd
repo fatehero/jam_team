@@ -9,7 +9,7 @@ var close=800
 var too_close=150
 var distance=0.0
 var spd=150
-var max_spd=400
+
 var dir=Vector2.ZERO
 var info
 var latency=0
@@ -52,12 +52,7 @@ func _physics_process(delta):
 		look_at(glo.player.global_position)
 		shot()
 		img.animation="idle"
-#		ray.cast_to.y=spd+40
-#		ray.force_raycast_update()
-#		if ray_detect(ray):
-#			randomize()
-#			var i=round(rand_range(2,3))
-#			var dir_ray=get_node("ray"+str(i))
+#		
 		var cur_spd=spd
 				
 		if distance>too_close:
@@ -105,7 +100,7 @@ func _on_hitbox_body_entered(body):
 		if body.shooter!=self:
 			body.pierce-=1	
 			if body.pierce<0:
-					get_parent().get_parent().enemys -= 1
+					
 					body.queue_free()
 
 

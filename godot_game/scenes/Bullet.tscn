@@ -114,7 +114,6 @@ position = Vector2( -2.12246, 0.140308 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 2 )
 animation = "shot4"
-frame = 4
 playing = true
 
 [node name="forward" type="Position2D" parent="."]

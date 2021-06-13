@@ -1,19 +1,20 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
-[ext_resource path="res://music/Song_1.mp3" type="AudioStream" id=1]
+[ext_resource path="res://music/Song_2.mp3" type="AudioStream" id=1]
 [ext_resource path="res://fonts/BebasNeue-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://scripts/high_score.gd" type="Script" id=3]
 [ext_resource path="res://scenes/Panel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://main.tres" type="StyleBox" id=5]
 [ext_resource path="res://scenes/half_in_main.gd" type="Script" id=6]
 [ext_resource path="res://shaders/chng3.shader" type="Shader" id=7]
+[ext_resource path="res://art/background_colours.png" type="Texture" id=8]
 [ext_resource path="res://art/sprite_0.png" type="Texture" id=9]
 [ext_resource path="res://art/sprite_1.png" type="Texture" id=10]
 [ext_resource path="res://art/sprite_2.png" type="Texture" id=11]
 [ext_resource path="res://art/sprite_3.png" type="Texture" id=12]
 [ext_resource path="res://scripts/ready.gd" type="Script" id=13]
 [ext_resource path="res://scenes/HSlider.gd" type="Script" id=14]
-[ext_resource path="res://background.png" type="Texture" id=15]
+[ext_resource path="res://art/background_stars.png" type="Texture" id=15]
 
 [sub_resource type="ShaderMaterial" id=1]
 render_priority = 1
@@ -267,6 +268,19 @@ motion_mirroring = Vector2( 512, 512 )
 [node name="background" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 modulate = Color( 0, 0.87451, 0.0352941, 1 )
 self_modulate = Color( 0, 0.811765, 1, 1 )
+texture = ExtResource( 8 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 512, 512 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+scale = Vector2( 2, 2 )
+motion_scale = Vector2( 0.5, 0.5 )
+motion_mirroring = Vector2( 512, 512 )
+
+[node name="background" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+modulate = Color( 0.992157, 1, 0.831373, 1 )
+self_modulate = Color( 0.988235, 1, 0.835294, 1 )
 texture = ExtResource( 15 )
 centered = false
 region_enabled = true
