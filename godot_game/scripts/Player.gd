@@ -23,6 +23,7 @@ func set_halfs(val):
 
 func _ready():
 	glo.player = self
+	rotation_speed = glo.rotation_speed
 	anim_left.playing = true
 	anim_right.playing = true
 

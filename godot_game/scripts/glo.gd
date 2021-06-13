@@ -7,6 +7,7 @@ extends Node
 # var a = 2
 # var b = "text"
 var bullet=preload('res://scenes/Bullet.tscn')
+var rotation_speed = 250
 var player:KinematicBody2D
 var my_ships=[]
 var enemy_ships=[]

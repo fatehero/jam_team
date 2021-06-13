@@ -11,7 +11,7 @@
 [ext_resource path="res://shaders/chng3.shader" type="Shader" id=9]
 [ext_resource path="res://scenes/anime.tscn" type="PackedScene" id=10]
 
-[sub_resource type="ShaderMaterial" id=10]
+[sub_resource type="ShaderMaterial" id=1]
 render_priority = 1
 shader = ExtResource( 9 )
 shader_param/original_0 = Color( 0.717647, 0.643137, 0.223529, 1 )
@@ -80,7 +80,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="ShaderMaterial" id=7]
+[sub_resource type="ShaderMaterial" id=6]
 render_priority = 1
 shader = ExtResource( 9 )
 shader_param/original_0 = Color( 0.717647, 0.643137, 0.223529, 1 )
@@ -94,7 +94,7 @@ shader_param/replace_2 = Color( 0.490196, 0.423529, 0.192157, 1 )
 shader_param/replace_3 = Color( 0.854902, 0.843137, 0.235294, 1 )
 shader_param/replace_4 = Color( 0.45098, 0.392157, 0.172549, 1 )
 
-[sub_resource type="Shader" id=8]
+[sub_resource type="Shader" id=7]
 code = "shader_type canvas_item;
 
 
@@ -132,9 +132,9 @@ void fragment() {
 
 "
 
-[sub_resource type="ShaderMaterial" id=9]
+[sub_resource type="ShaderMaterial" id=8]
 render_priority = 1
-shader = SubResource( 8 )
+shader = SubResource( 7 )
 shader_param/original_0 = Color( 0.717647, 0.643137, 0.223529, 1 )
 shader_param/original_1 = Color( 0.556863, 0.490196, 0.188235, 1 )
 shader_param/original_2 = Color( 0.490196, 0.423529, 0.192157, 1 )
@@ -147,7 +147,7 @@ shader_param/replace_3 = Color( 0.854902, 0.235294, 0.235294, 1 )
 shader_param/replace_4 = Color( 0.45098, 0.172549, 0.172549, 1 )
 shader_param/precision = 0.0
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=9]
 resource_name = "hit"
 step = 0.05
 tracks/0/type = "value"
@@ -163,7 +163,7 @@ tracks/0/keys = {
 "values": [ Color( 0.898039, 0.109804, 0.109804, 1 ), Color( 1, 1, 1, 0.301961 ), Color( 0.898039, 0.109804, 0.109804, 1 ), Color( 1, 1, 1, 0.301961 ), Color( 0.898039, 0.109804, 0.109804, 1 ) ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=10]
 resource_name = "idle"
 tracks/0/type = "value"
 tracks/0/path = NodePath("..:modulate")
@@ -201,11 +201,12 @@ collision_mask = 2
 script = ExtResource( 4 )
 
 [node name="img" type="AnimatedSprite" parent="right_half"]
-material = SubResource( 10 )
+material = SubResource( 1 )
 position = Vector2( 32, 0 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 2 )
 animation = "move"
+frame = 2
 playing = true
 flip_h = true
 
@@ -255,29 +256,27 @@ wait_time = 0.1
 autostart = true
 
 [node name="img" type="AnimatedSprite" parent="left_half"]
-material = SubResource( 7 )
+material = SubResource( 6 )
 position = Vector2( -32, 0 )
 scale = Vector2( -2, 2 )
 frames = SubResource( 2 )
 animation = "move"
-frame = 1
 playing = true
 flip_h = true
 
 [node name="img2" type="AnimatedSprite" parent="left_half"]
 visible = false
-material = SubResource( 9 )
+material = SubResource( 8 )
 position = Vector2( -32, 0 )
 scale = Vector2( -2, 2 )
 frames = SubResource( 2 )
 animation = "move"
-frame = 1
 playing = true
 flip_h = true
 
 [node name="anime" parent="left_half" instance=ExtResource( 10 )]
-anims/hit = SubResource( 11 )
-anims/idle = SubResource( 12 )
+anims/hit = SubResource( 9 )
+anims/idle = SubResource( 10 )
 
 [connection signal="body_entered" from="right_half" to="right_half" method="_on_right_half_body_entered"]
 [connection signal="timeout" from="right_half/Timer" to="right_half" method="_on_Timer_timeout"]
