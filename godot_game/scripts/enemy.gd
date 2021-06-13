@@ -73,6 +73,6 @@ func _on_hitbox_body_entered(body):
 			self.hp-=body.dmg
 			body.pierce-=1
 			anime.play("hit")
-			if body.pierce<0:
+		if body.pierce<0:
 				
-				body.queue_free()
+				body.queue_free()	

@@ -5,10 +5,13 @@ extends Area2D
 # var a = 2
 # var b = "text"
 export var side="r"
+
 var info
 onready var img=$img
+onready var coll=$coll
 onready var anime=$anime
 var latency=0
+var died=false
 var hp setget set_hp
 func set_hp(val):
 	hp=val
@@ -16,9 +19,11 @@ func set_hp(val):
 	glo[side+"_hp"]=hp
 	print(hp)
 	glo.emit_signal("take_dmg")
-	if hp<=0:
+	if hp<=0 and!died:
 		glo.player["halfs"]-=1
 		visible=false
+		died=true
+		coll.queue_free()
 		pause_mode=Node.PAUSE_MODE_STOP
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,7 +39,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed(side+"_atk"):
+	if Input.is_action_just_pressed(side+"_atk")and!died:
 		shoot()
 func shoot():
 	if latency<=0:
