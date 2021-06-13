@@ -45,7 +45,7 @@ func _process(delta):
 func shoot():
 	if latency<=0:
 		var new_bullet:KinematicBody2D=glo.bullet.instance()
-		for i in ['dmg','spd','pierce']:
+		for i in ['dmg','spd','pierce',"shape"]:
 			new_bullet[i]=info['bullet_'+i]
 		new_bullet.global_position=	glo.player.forward.global_position
 		new_bullet.global_rotation=global_rotation

@@ -12,4 +12,5 @@ bullet_pierce = 0
 bullet_dmg = 10
 latency = 1.2
 speed = 25
+bullet_shape = 4
 descrption = ""

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://scenes/anime.tscn" type="PackedScene" id=1]
 [ext_resource path="res://fonts/BebasNeue-Regular.ttf" type="DynamicFontData" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://art/sprite_3.png" type="Texture" id=12]
 [ext_resource path="res://scripts/ready.gd" type="Script" id=13]
 [ext_resource path="res://scenes/HSlider.gd" type="Script" id=14]
+[ext_resource path="res://background.png" type="Texture" id=15]
 
 [sub_resource type="ShaderMaterial" id=1]
 render_priority = -1
@@ -270,7 +271,6 @@ position = Vector2( 32, 0 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 4 )
 animation = "move"
-frame = 1
 playing = true
 flip_h = true
 
@@ -306,7 +306,6 @@ position = Vector2( -32, 0 )
 scale = Vector2( -2, 2 )
 frames = SubResource( 2 )
 animation = "move"
-frame = 1
 playing = true
 flip_h = true
 
@@ -320,7 +319,6 @@ position = Vector2( -32, 0 )
 scale = Vector2( -2, 2 )
 frames = SubResource( 12 )
 animation = "move"
-frame = 1
 playing = true
 flip_h = true
 
@@ -438,6 +436,21 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+scale = Vector2( 2, 2 )
+motion_scale = Vector2( 0.5, 0.5 )
+motion_mirroring = Vector2( 512, 512 )
+
+[node name="background" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+modulate = Color( 0.129412, 0.243137, 0.996078, 1 )
+self_modulate = Color( 0, 0.811765, 1, 1 )
+texture = ExtResource( 15 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 512, 512 )
 
 [connection signal="body_entered" from="Player/right_half" to="Player/right_half" method="_on_right_half_body_entered"]
 [connection signal="timeout" from="Player/right_half/Timer" to="Player/right_half" method="_on_Timer_timeout"]
