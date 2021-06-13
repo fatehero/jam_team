@@ -6,7 +6,9 @@ export var bullet_spd=320
 export var bullet_pierce=0
 export var bullet_dmg=10
 export var latency=1.0
+export var speed=25
 export var descrption=""
+
 
  
 func _ready():

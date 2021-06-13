@@ -31,5 +31,5 @@ signal scored_high
 func _ready():
 	for i in range(4):
 		my_ships.append(load("res://ship_types_resource/ship_type"+str(i)+".tres").duplicate())
-	for i in range(4):
+	for i in range(5,10):
 		enemy_ships.append(load("res://ship_types_resource/ship_type"+str(i)+".tres").duplicate())

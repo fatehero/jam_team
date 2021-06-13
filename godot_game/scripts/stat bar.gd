@@ -5,13 +5,14 @@ extends ProgressBar
 # var a = 2
 # var b = "text"
 export var prop="helth"
+export var added_text="" 
 var side
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	glo.connect("reset_type",self,"reset")
 	side=get_parent().get_parent().side
-	$text.text=prop
+	$text.text=added_text+prop
 	value=glo.my_ships[glo[side+"_selected"]][prop]
 	
 

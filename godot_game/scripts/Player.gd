@@ -8,24 +8,27 @@ onready var anim_right =$right_half/img
 
 var motion : Vector2
 var speed = 300
-var rotation_speed = 250
+var rotation_speed = 200
 var halfs=2 setget set_halfs
 
 
 func set_halfs(val):
 	print("set_half")
 	halfs=val
+	
 	if halfs<=0:
 		if glo.score>glo.high_score:
 			glo.high_score=glo.score
 			glo.emit_signal("scored_high")
-		get_tree().reload_current_scene()
+		get_tree().change_scene("res://scenes/main.tscn")
 
 func _ready():
 	glo.player = self
 	rotation_speed = glo.rotation_speed
 	anim_left.playing = true
 	anim_right.playing = true
+	speed+=glo.r_half.info.speed
+	speed+=glo.l_half.info.speed
 
 func _physics_process(delta):
 	var up = Input.is_action_pressed("up")

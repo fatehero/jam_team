@@ -5,10 +5,10 @@ extends KinematicBody2D
 # var a = 2
 # var b = "text"
 
-var close=700
-var too_close=100
+var close=1000
+var too_close=150
 var distance=0.0
-var spd=100
+var spd=150
 var dir=Vector2.ZERO
 var info
 var latency=0
@@ -21,12 +21,18 @@ func set_hp(val):
 		queue_free()
 
 onready var forward = $Forward
+onready var img = $img
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
 	var rnd=round(rand_range(0,glo.enemy_ships.size()-1))
+	print("rnd",rnd)
 	info=glo.enemy_ships[rnd]
 	
+	for i in info.colors.size():
+		print(info.colors[i])
+		img.material.set_shader_param("replace_"+str(i), info.colors[i])
+	spd+=info.speed
 	hp=info.helth
 
 
@@ -56,6 +62,7 @@ func shot():
 			new_bullet[i]=info['bullet_'+i]
 		new_bullet.global_position=	forward.global_position
 		new_bullet.global_rotation_degrees=global_rotation_degrees+90
+		new_bullet.shooter=self
 		glo.field.add_child(new_bullet)
 		latency=info.latency
 		
@@ -71,8 +78,10 @@ func _on_hitbox_body_entered(body):
 		if body.belong_to!="enemy":
 			
 			self.hp-=body.dmg
-			body.pierce-=1
+			
 			anime.play("hit")
-		if body.pierce<0:
-				
-				body.queue_free()	
+		if body.shooter!=self:
+			body.pierce-=1	
+			if body.pierce<0:
+					
+					body.queue_free()	

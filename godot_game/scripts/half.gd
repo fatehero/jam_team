@@ -33,6 +33,7 @@ func _ready():
 	for i in info.colors.size():
 		print(info.colors[i])
 		img.material.set_shader_param("replace_"+str(i), info.colors[i])
+	
 	self.hp=info.helth+20
 
 

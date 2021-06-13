@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/enmy.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scripts/high_score.gd" type="Script" id=7]
 [ext_resource path="res://music/Song_1.mp3" type="AudioStream" id=8]
 [ext_resource path="res://scripts/Level1.gd" type="Script" id=9]
+[ext_resource path="res://background.png" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -112,7 +113,7 @@ position = Vector2( 160, 229 )
 
 [node name="enmy" parent="enmy_ground" instance=ExtResource( 2 )]
 
-[node name="Spawns" type="Node" parent="."]
+[node name="Spawns" type="CanvasLayer" parent="."]
 
 [node name="Spawn1" type="Position2D" parent="Spawns"]
 position = Vector2( 64, 448 )
@@ -125,3 +126,15 @@ position = Vector2( 512, 192 )
 
 [node name="Spawn4" type="Position2D" parent="Spawns"]
 position = Vector2( 512, 704 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+scale = Vector2( 2, 2 )
+motion_mirroring = Vector2( 512, 512 )
+
+[node name="background" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 10 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 512, 512 )
