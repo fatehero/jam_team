@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://fonts/BebasNeue-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scripts/stat bar.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 0.298039, 0.901961, 0.0509804, 1 )
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 0.0823529, 0.0156863, 0.0156863, 1 )
+
+[sub_resource type="DynamicFont" id=1]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+extra_spacing_char = 2
+font_data = ExtResource( 1 )
+
+[node name="ProgressBar" type="ProgressBar"]
+margin_right = 180.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 0, 16 )
+custom_styles/fg = SubResource( 18 )
+custom_styles/bg = SubResource( 19 )
+max_value = 400.0
+value = 50.0
+percent_visible = false
+script = ExtResource( 2 )
+
+[node name="text" type="Label" parent="."]
+margin_right = 44.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 1 )
+text = "prop"
+__meta__ = {
+"_edit_use_anchors_": false
+}

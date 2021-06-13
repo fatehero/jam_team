@@ -21,11 +21,14 @@ var r_hp=0
 var l_hp=0
 var score=0
 var high_score=0
+var r_panel
+var l_panel
+signal reset_type
 signal scored_high
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
 	for i in range(4):
 		my_ships.append(load("res://ship_types_resource/ship_type"+str(i)+".tres").duplicate())
-	for i in range(2):
+	for i in range(4):
 		enemy_ships.append(load("res://ship_types_resource/ship_type"+str(i)+".tres").duplicate())

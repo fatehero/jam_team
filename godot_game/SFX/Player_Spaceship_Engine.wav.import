@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Player_Spaceship_Engine.wav-625f3a2652d5f7b5fa8c9cd5a0ee51aa.sample"
+
+[deps]
+
+source_file="res://SFX/Player_Spaceship_Engine.wav"
+dest_files=[ "res://.import/Player_Spaceship_Engine.wav-625f3a2652d5f7b5fa8c9cd5a0ee51aa.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

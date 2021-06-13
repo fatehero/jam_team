@@ -9,4 +9,5 @@ helth = 100
 bullet_spd = 320
 bullet_pierce = 0
 bullet_dmg = 15
-latency = 1
+latency = 1.0
+descrption = ""

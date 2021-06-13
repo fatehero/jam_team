@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Player_Spaceship_Shot-003.wav-e52b4383310223ae18c5394b2327923e.sample"
+
+[deps]
+
+source_file="res://SFX/Player_Spaceship_Shot-003.wav"
+dest_files=[ "res://.import/Player_Spaceship_Shot-003.wav-e52b4383310223ae18c5394b2327923e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

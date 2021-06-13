@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/NPC_Spaceship_Gun-005.wav-a5c93c4be4a3f41b09208cbece9b015d.sample"
+
+[deps]
+
+source_file="res://SFX/NPC_Spaceship_Gun-005.wav"
+dest_files=[ "res://.import/NPC_Spaceship_Gun-005.wav-a5c93c4be4a3f41b09208cbece9b015d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

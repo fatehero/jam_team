@@ -27,7 +27,7 @@ func set_hp(val):
 		pause_mode=Node.PAUSE_MODE_STOP
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(glo.player)
+	
 	glo[side+"_half"]=self
 	info=glo.my_ships[glo[side+"_selected"]]
 	for i in info.colors.size():
