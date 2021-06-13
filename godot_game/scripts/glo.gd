@@ -23,9 +23,11 @@ signal take_dmg
 var r_hp=0
 var l_hp=0
 var score=0
+var spawn_count=0
 var high_score=0
 var r_panel
 var l_panel
+signal spawn
 signal reset_type
 signal scored_high
 # Called when the node enters the scene tree for the first time.

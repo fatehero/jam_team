@@ -5,10 +5,11 @@ extends KinematicBody2D
 # var a = 2
 # var b = "text"
 
-var close=600
+var close=800
 var too_close=150
 var distance=0.0
 var spd=150
+var max_spd=400
 var dir=Vector2.ZERO
 var info
 var latency=0
@@ -57,14 +58,20 @@ func _physics_process(delta):
 #			randomize()
 #			var i=round(rand_range(2,3))
 #			var dir_ray=get_node("ray"+str(i))
-#			print("colideng")
-
+		var cur_spd=spd	
+		if distance>close:
+			cur_spd=max_spd
+			glo.spawn_count+=1
+			if glo.spawn_count==300:
+				glo.emit_signal("spawn")
+				glo.spawn_count=0
+				
 		if distance>too_close:
 				img.animation="move"
 				if  !$engine.playing:
 					$engine.play()
 				dir=global_position.direction_to(glo.player.global_position)
-				move_and_slide(dir.normalized()*spd)
+				move_and_slide(dir.normalized()*cur_spd)
 		
 		
 

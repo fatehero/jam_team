@@ -32,7 +32,7 @@ autoplay = true
 script = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 512, 448 )
+position = Vector2( 520.824, 287.351 )
 
 [node name="uii" type="CanvasLayer" parent="."]
 
