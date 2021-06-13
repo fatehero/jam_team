@@ -58,13 +58,7 @@ func _physics_process(delta):
 #			randomize()
 #			var i=round(rand_range(2,3))
 #			var dir_ray=get_node("ray"+str(i))
-		var cur_spd=spd	
-		if distance>close:
-			cur_spd=max_spd
-			glo.spawn_count+=1
-			if glo.spawn_count==300:
-				glo.emit_signal("spawn")
-				glo.spawn_count=0
+		var cur_spd=spd
 				
 		if distance>too_close:
 				img.animation="move"
@@ -111,8 +105,8 @@ func _on_hitbox_body_entered(body):
 		if body.shooter!=self:
 			body.pierce-=1	
 			if body.pierce<0:
-					
-					body.queue_free()	
+					get_parent().get_parent().enemys -= 1
+					body.queue_free()
 
 
 

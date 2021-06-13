@@ -15,6 +15,33 @@
 [ext_resource path="res://scenes/HSlider.gd" type="Script" id=14]
 [ext_resource path="res://background.png" type="Texture" id=15]
 
+[sub_resource type="ShaderMaterial" id=1]
+render_priority = 1
+shader = ExtResource( 7 )
+shader_param/original_0 = Color( 0.717647, 0.643137, 0.223529, 1 )
+shader_param/original_1 = Color( 0.556863, 0.490196, 0.188235, 1 )
+shader_param/original_2 = Color( 0.490196, 0.423529, 0.192157, 1 )
+shader_param/original_3 = Color( 0.854902, 0.843137, 0.235294, 1 )
+shader_param/original_4 = Color( 0.45098, 0.392157, 0.172549, 1 )
+shader_param/replace_0 = Color( 0.717647, 0.643137, 0.223529, 1 )
+shader_param/replace_1 = Color( 0.556863, 0.490196, 0.188235, 1 )
+shader_param/replace_2 = Color( 0.490196, 0.423529, 0.192157, 1 )
+shader_param/replace_3 = Color( 0.854902, 0.843137, 0.235294, 1 )
+shader_param/replace_4 = Color( 0.45098, 0.392157, 0.172549, 1 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "move",
+"speed": 5.0
+} ]
+
 [sub_resource type="ShaderMaterial" id=3]
 render_priority = 1
 shader = ExtResource( 7 )
@@ -42,47 +69,20 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="ShaderMaterial" id=11]
-render_priority = 1
-shader = ExtResource( 7 )
-shader_param/original_0 = Color( 0.717647, 0.643137, 0.223529, 1 )
-shader_param/original_1 = Color( 0.556863, 0.490196, 0.188235, 1 )
-shader_param/original_2 = Color( 0.490196, 0.423529, 0.192157, 1 )
-shader_param/original_3 = Color( 0.854902, 0.843137, 0.235294, 1 )
-shader_param/original_4 = Color( 0.45098, 0.392157, 0.172549, 1 )
-shader_param/replace_0 = Color( 0.717647, 0.643137, 0.223529, 1 )
-shader_param/replace_1 = Color( 0.556863, 0.490196, 0.188235, 1 )
-shader_param/replace_2 = Color( 0.490196, 0.423529, 0.192157, 1 )
-shader_param/replace_3 = Color( 0.854902, 0.843137, 0.235294, 1 )
-shader_param/replace_4 = Color( 0.45098, 0.392157, 0.172549, 1 )
-
-[sub_resource type="SpriteFrames" id=12]
-animations = [ {
-"frames": [ ExtResource( 9 ) ],
-"loop": true,
-"name": "idle",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "move",
-"speed": 5.0
-} ]
-
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=5]
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 extra_spacing_char = 2
 font_data = ExtResource( 2 )
 
-[sub_resource type="StyleBoxFlat" id=14]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.0980392, 0.831373, 0.803922, 1 )
 
-[sub_resource type="StyleBoxFlat" id=15]
+[sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.0156863, 0.0235294, 0.137255, 1 )
 
-[sub_resource type="DynamicFont" id=16]
+[sub_resource type="DynamicFont" id=8]
 font_data = ExtResource( 2 )
 
 [node name="main" type="CanvasLayer"]
@@ -117,11 +117,12 @@ collision_mask = 2
 script = ExtResource( 6 )
 
 [node name="img" type="AnimatedSprite" parent="Player/right_half"]
-material = SubResource( 3 )
+material = SubResource( 1 )
 position = Vector2( 32, 0 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 4 )
+frames = SubResource( 2 )
 animation = "move"
+frame = 2
 playing = true
 flip_h = true
 
@@ -132,11 +133,12 @@ script = ExtResource( 6 )
 side = "l"
 
 [node name="img" type="AnimatedSprite" parent="Player/left_half"]
-material = SubResource( 11 )
+material = SubResource( 3 )
 position = Vector2( -32, 0 )
 scale = Vector2( -2, 2 )
-frames = SubResource( 12 )
+frames = SubResource( 4 )
 animation = "move"
+frame = 2
 playing = true
 flip_h = true
 
@@ -160,7 +162,7 @@ margin_left = -52.3811
 margin_top = 84.5895
 margin_right = 56.6189
 margin_bottom = 114.589
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 5 )
 text = "000"
 align = 2
 script = ExtResource( 3 )
@@ -177,7 +179,7 @@ margin_left = -102.881
 margin_top = 84.5895
 margin_right = 7.1189
 margin_bottom = 114.589
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 5 )
 text = "high score:"
 align = 2
 __meta__ = {
@@ -195,8 +197,8 @@ margin_left = -92.0
 margin_top = 116.0
 margin_right = 92.0
 margin_bottom = 212.0
-custom_styles/hover = SubResource( 14 )
-custom_styles/pressed = SubResource( 15 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
 custom_styles/normal = ExtResource( 5 )
 text = "ready"
 script = ExtResource( 13 )
@@ -234,7 +236,7 @@ margin_bottom = -11.951
 rect_min_size = Vector2( 100, 15 )
 rect_pivot_offset = Vector2( 50, 0 )
 custom_styles/normal = ExtResource( 5 )
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 8 )
 text = "250"
 align = 1
 __meta__ = {

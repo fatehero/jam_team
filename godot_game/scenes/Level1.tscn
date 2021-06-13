@@ -34,6 +34,20 @@ script = ExtResource( 3 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 520.824, 287.351 )
 
+[node name="Spawns" type="Node" parent="Player"]
+
+[node name="Spawn1" type="Position2D" parent="Player/Spawns"]
+position = Vector2( 64, 448 )
+
+[node name="Spawn2" type="Position2D" parent="Player/Spawns"]
+position = Vector2( 960, 448 )
+
+[node name="Spawn3" type="Position2D" parent="Player/Spawns"]
+position = Vector2( 512, 192 )
+
+[node name="Spawn4" type="Position2D" parent="Player/Spawns"]
+position = Vector2( 512, 704 )
+
 [node name="uii" type="CanvasLayer" parent="."]
 
 [node name="hp" parent="uii" instance=ExtResource( 4 )]
@@ -113,20 +127,6 @@ __meta__ = {
 position = Vector2( 160, 229 )
 
 [node name="enmy" parent="enmy_ground" instance=ExtResource( 2 )]
-
-[node name="Spawns" type="CanvasLayer" parent="."]
-
-[node name="Spawn1" type="Position2D" parent="Spawns"]
-position = Vector2( 64, 448 )
-
-[node name="Spawn2" type="Position2D" parent="Spawns"]
-position = Vector2( 960, 448 )
-
-[node name="Spawn3" type="Position2D" parent="Spawns"]
-position = Vector2( 512, 192 )
-
-[node name="Spawn4" type="Position2D" parent="Spawns"]
-position = Vector2( 512, 704 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
