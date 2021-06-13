@@ -4,6 +4,7 @@ extends KinematicBody2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+
 var close=700
 var too_close=100
 var distance=0.0
@@ -12,9 +13,11 @@ var dir=Vector2.ZERO
 var info
 var latency=0
 var hp setget set_hp
+onready var anime=$anime
 func set_hp(val):
 	hp=val
 	if hp<=0:
+		glo.score+=5
 		queue_free()
 
 onready var forward = $Forward
@@ -69,5 +72,7 @@ func _on_hitbox_body_entered(body):
 			
 			self.hp-=body.dmg
 			body.pierce-=1
+			anime.play("hit")
 			if body.pierce<0:
+				
 				body.queue_free()

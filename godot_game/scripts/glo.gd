@@ -19,6 +19,9 @@ var field
 signal take_dmg
 var r_hp=0
 var l_hp=0
+var score=0
+var high_score=0
+signal scored_high
 # Called when the node enters the scene tree for the first time.
 
 func _ready():

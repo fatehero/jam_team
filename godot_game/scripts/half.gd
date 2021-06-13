@@ -7,6 +7,7 @@ extends Area2D
 export var side="r"
 var info
 onready var img=$img
+onready var anime=$anime
 var latency=0
 var hp setget set_hp
 func set_hp(val):
@@ -17,7 +18,8 @@ func set_hp(val):
 	glo.emit_signal("take_dmg")
 	if hp<=0:
 		glo.player["halfs"]-=1
-		queue_free()
+		visible=false
+		pause_mode=Node.PAUSE_MODE_STOP
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print(glo.player)
@@ -50,8 +52,9 @@ func shoot():
 func _on_right_half_body_entered(body):
 	if 'dmg' in body:
 		if body.belong_to=="enemy":
-			print("yes")
+			
 			self.hp-=body.dmg
+			anime.play("hit")
 			body.queue_free()
 
 

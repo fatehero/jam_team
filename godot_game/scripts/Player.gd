@@ -16,6 +16,9 @@ func set_halfs(val):
 	print("set_half")
 	halfs=val
 	if halfs<=0:
+		if glo.score>glo.high_score:
+			glo.high_score=glo.score
+			glo.emit_signal("scored_high")
 		get_tree().reload_current_scene()
 
 func _ready():

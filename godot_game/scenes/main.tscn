@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
+
+[node name="main" type="CanvasLayer"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+pause_mode = 1
+position = Vector2( 514.899, 67.8056 )
+script = null
+
+[node name="Camera2D" parent="Player" index="0"]
+current = false
+
+[node name="right_half" parent="Player" index="3"]
+script = null
+
+[node name="img" parent="Player/right_half" index="0"]
+frame = 1
+
+[node name="left_half" parent="Player" index="4"]
+script = null
+
+[node name="img" parent="Player/left_half" index="3"]
+frame = 2
+
+[node name="img2" parent="Player/left_half" index="4"]
+frame = 2
+
+[node name="l_settings" type="VBoxContainer" parent="."]
+margin_right = 438.0
+margin_bottom = 372.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="r_settings" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -438.0
+margin_bottom = 372.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[editable path="Player"]
