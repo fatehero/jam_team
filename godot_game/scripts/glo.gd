@@ -22,6 +22,9 @@ var field
 signal take_dmg
 var r_hp=0
 var l_hp=0
+var enemys=0
+var max_enemys=6
+var level
 var score=0
 var high_score=0
 var r_panel

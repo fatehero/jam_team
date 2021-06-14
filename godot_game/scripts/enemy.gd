@@ -21,6 +21,8 @@ onready var anime=$anime
 func set_hp(val):
 	hp=val
 	if hp<=0:
+		glo.level.spawn_enemy()
+		glo.enemys-=1
 		glo.score+=5
 		queue_free()
 

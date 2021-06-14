@@ -17,6 +17,7 @@ func set_halfs(val):
 	halfs=val
 	
 	if halfs<=0:
+		glo.enemys=0
 		if glo.score>glo.high_score:
 			glo.high_score=glo.score
 			glo.emit_signal("scored_high")
